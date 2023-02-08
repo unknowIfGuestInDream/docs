@@ -25,8 +25,8 @@ pull_request_rules:
       - "#review-requested=0"
     actions:
       request_reviews:
-        users:
-          - unknowIfGuestInDream
+        teams:
+          - "@tlcsdm/nyxue"
   - name: Label enhancement
     conditions:
       - title~=^feat(\(([\w$.\-*/ ]*)\))?:[ ](.*)$
@@ -106,9 +106,23 @@ pull_request_rules:
           @{{author}}
           There are some conflicts within your pull request.
           Could you please fix them?
+  - name: GitGuardian check comment
+    conditions:
+      - "status-failure=GitGuardian Security Checks"
+      - author!=dependabot[bot]
+      - author!=imgbot[bot]
+      - "-closed"
+      - "-merged"
+    actions:
+      comment:
+        message: |
+          @{{author}}
+          Your commit has API keys, passwords, certificates, encryption keys and other sensitive data!
+          Please remove this sensitive data.
   - name: All check pass comment
     conditions:
       - status-success=Title Validator
+      - "status-failure=GitGuardian Security Checks"
       - "-closed"
       - "-draft"
       - "-conflict"
