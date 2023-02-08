@@ -1,5 +1,15 @@
 freemarker:
   - docs/freemarker/**
 
+extjs:
+  - docs/extjs/**
+
+workflow:
+  - .github/**
+  - .mergify.yml
+
+readme:
+  - README.md
+
 automerge:
   - all: [ 'README.md' ]

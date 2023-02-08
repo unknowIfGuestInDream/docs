@@ -1,24 +1,21 @@
-name: CI
+name: Deploy
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
     paths-ignore:
-      - 'README.md'
-      - 'LICENSE'
       - '.github/**'
+      - 'LICENSE'
+      - 'README.md'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 切换分支
       - name: Checkout
-        uses: actions/checkout@master
-      #      # 下载 git submodule
-      #      - uses: srt32/git-actions@v0.0.3
-      #        with:
-      #          args: git submodule update --init --recursive
-      # Deploy
+        uses: actions/checkout@v3
+        with:
+          submodules: true
       # - name: Deploy to Server
       #   uses: easingthemes/ssh-deploy@v3.0.1
       #   env:
