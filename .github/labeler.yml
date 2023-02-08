@@ -1,0 +1,5 @@
+freemarker:
+  - docs/freemarker/**
+
+automerge:
+  - all: [ 'README.md' ]
