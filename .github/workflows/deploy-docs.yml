@@ -16,12 +16,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-       - name: Publish to server
-         uses: easingthemes/ssh-deploy@v3.0.1
-         env:
-           SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
-           ARGS: "-avzr --delete"
-           SOURCE: "docs/"
-           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-           TARGET: ${{ secrets.TARGET }}
+      - name: Publish to server
+        uses: easingthemes/ssh-deploy@v3.0.1
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
+          ARGS: "-avzr --delete"
+          SOURCE: "docs/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.TARGET }}
