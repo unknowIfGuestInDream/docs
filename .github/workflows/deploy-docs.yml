@@ -4,7 +4,6 @@ on:
     branches:
       - master
     paths-ignore:
-      - '.github/**'
       - 'LICENSE'
       - 'README.md'
 
